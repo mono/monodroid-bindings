@@ -44,6 +44,7 @@ THE SOFTWARE.
 
 Authors
 =======
-Atsushi Eno
-Jonathan Pryor
+
+* Atsushi Eno
+* Jonathan Pryor
 
