@@ -1,0 +1,3 @@
+<metadata>
+  <attr path="/api/package[@name='com.google.android.maps']" name="managedName">Android.GoogleMaps</attr>
+</metadata>

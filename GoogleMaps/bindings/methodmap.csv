@@ -1,0 +1,7 @@
+0, com.google.android.maps, MapController, onKey, keyCode, Android.Views.Keycode
+0, com.google.android.maps, MapActivity, onGetMapDataSource, return, Com.Google.Android.Maps.MapDataSource
+0, com.google.android.maps, OverlayItem, getMarker, stateBitset, Com.Google.Android.Maps.ItemState
+0, com.google.android.maps, MyLocationOverlay, onStatusChanged, status, Android.Locations.Availability
+0, com.google.android.maps, MyLocationOverlay, onAccuracyChanged, sensor, Android.Hardware.SensorType
+0, com.google.android.maps, MyLocationOverlay, onAccuracyChanged, accuracy, Android.Hardware.SensorStatus
+0, com.google.android.maps, MyLocationOverlay, onSensorChanged, sensor, Android.Hardware.SensorType
