@@ -32,7 +32,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 		-fixup=Maps.fixup \
 		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
 		-o obj/platform-$* \
-		-javadoc=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/$(if $(findstr 15,$*),maps_apis,reference) \
+		-javadoc=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/$(if $$(findstr 15,$*),maps_apis,reference) \
 		-cscopt -debug+ $(SOURCES:%=-cscopt "%")
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll fieldmap.xml Maps.fixup
