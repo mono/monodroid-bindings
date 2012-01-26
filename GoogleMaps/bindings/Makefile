@@ -9,8 +9,9 @@ platforms_dir := $(BUILDDIR)/platforms
 
 ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll)
 DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml)
+JARS       = $(API_LEVELS:%=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-%/libs/maps.jar)
 
-all:: $(ASSEMBLIES) $(DOCS)
+all:: $(JARS) $(ASSEMBLIES) $(DOCS)
 
 clean::
 	$(RM) -r $(ASSEMBLIES) obj
@@ -42,3 +43,10 @@ $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir
 	mdoc update -o obj/platform-$*/docs $< -L $(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$*
 	mdoc export-msxdoc -o $@ obj/platform-$*/docs
 
+$(MCW_GEN):
+	@echo "Building bindings requires Mono for Android 4.2 or later."
+	exit 1
+
+$(JARS):
+	@echo "Please install the \"Google APIs by Google Inc.\" package for API level(s) $(API_LEVELS)."
+	exit 1
