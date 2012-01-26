@@ -1,0 +1,12 @@
+<enum-field-mappings>
+  <type enum-type="Android\GoogleMaps\MapDataSource" java-class="com/google/android/maps/MapActivity">
+    <member enum="China" java="MAP_DATA_SOURCE_CHINA" value="1" />
+    <member enum="Default" java="MAP_DATA_SOURCE_Default" value="0" />
+  </type>
+  <type enum-type="Android\GoogleMaps\ItemState" java-class="com/google/android/maps/OverlayItem">
+    <member enum="Focused" java="ITEM_STATE_FOCUSED_MASK" value="4" />
+    <member enum="Pressed" java="ITEM_STATE_PRESSED_MASK" value="1" />
+    <member enum="Selected" java="ITEM_STATE_SELECTED_MASK" value="2" />
+  </type>
+</enum-field-mappings>
+

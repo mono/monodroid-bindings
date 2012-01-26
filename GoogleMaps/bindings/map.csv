@@ -1,5 +1,0 @@
-0, Android\GoogleMaps\MapDataSource, China, com/google/android/maps/MapActivity.MAP_DATA_SOURCE_CHINA, 1
-0, Android\GoogleMaps\MapDataSource, Default, com/google/android/maps/MapActivity.MAP_DATA_SOURCE_DEFAULT, 0
-0, Android\GoogleMaps\ItemState, Focused, com/google/android/maps/OverlayItem.ITEM_STATE_FOCUSED_MASK, 4
-0, Android\GoogleMaps\ItemState, Pressed, com/google/android/maps/OverlayItem.ITEM_STATE_PRESSED_MASK, 1
-0, Android\GoogleMaps\ItemState, Selected, com/google/android/maps/OverlayItem.ITEM_STATE_SELECTED_MASK, 2

@@ -1,0 +1,9 @@
+<enum-method-mappings>
+  <map package="com.google.android.maps" class="MapController" method="onKey" parameter="keyCode" enum="Android.Views.Keycode" />
+  <map package="com.google.android.maps" class="MapActivity" method="onGetMapDataSource" parameter="return" enum="Com.Google.Android.Maps.MapDataSource" />
+  <map package="com.google.android.maps" class="OverlayItem" method="getMarker" parameter="stateBitset" enum="Com.Google.Android.Maps.ItemState" />
+  <map package="com.google.android.maps" class="MyLocationOverlay" method="onStatusChanged" parameter="status" enum="Android.Locations.Availability" />
+  <map package="com.google.android.maps" class="MyLocationOverlay" method="onAccuracyChanged" parameter="sensor" enum="Android.Hardware.SensorType" />
+  <map package="com.google.android.maps" class="MyLocationOverlay" method="onAccuracyChanged" parameter="accuracy" enum="Android.Hardware.SensorStatus" />
+  <map package="com.google.android.maps" class="MyLocationOverlay" method="onSensorChanged" parameter="sensor" enum="Android.Hardware.SensorType" />
+</enum-method-mappings>

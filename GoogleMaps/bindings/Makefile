@@ -3,8 +3,7 @@ ANDROID_SDK_PATH  := /opt/android/sdk
 API_LEVELS        := 8
 BUILDDIR          := bin
 
-RUNTIME           := mono
-MCW_GEN           := $(MONO_ANDROID_PATH)/lib/mandroid/mcw-gen.exe
+MCW_GEN           := $(MONO_ANDROID_PATH)/bin/mcw-gen
 
 platforms_dir := $(BUILDDIR)/platforms
 
@@ -22,21 +21,21 @@ SOURCES = \
 	src/Android.GoogleMaps/MyLocationOverlay.cs \
 	src/Android.GoogleMaps/TrackballGestureDetector.cs
 
-$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: map.csv methodmap.csv Maps.fixup $(MCW_GEN)
+$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.xml methodmap.xml Maps.fixup $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
-	$(RUNTIME) $(MCW_GEN) \
-		-sdk=$(ANDROID_SDK_PATH) \
+	$(MCW_GEN) \
+		-sdk-dir="$(ANDROID_SDK_PATH)" \
+		-sdk-platform=$* \
 		-jar=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/libs/maps.jar \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.GoogleMaps.dll" \
 		-fixup=Maps.fixup \
-		-api-level=$* -outdir=obj/platform-$* \
+		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
+		-o obj/platform-$* \
 		-javadoc=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/$(if $(findstr 15,$*),maps_apis,reference) \
-		-fixup=metadata \
-		-enumfields=map.csv -enummethods=methodmap.csv -global -v \
-		-cscopt="-debug+ $(SOURCES)"
+		-cscopt -debug+ $(SOURCES:%=-cscopt "%")
 
-$(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll map.csv Maps.fixup
+$(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll fieldmap.xml Maps.fixup
 	$(RM) -R obj/platform-$*/docs
 	-mkdir -p obj/platform-$*/docs
 	-cp -R Documentation/en obj/platform-$*/docs
