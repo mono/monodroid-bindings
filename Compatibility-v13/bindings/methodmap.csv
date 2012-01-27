@@ -1,4 +1,0 @@
-0,android.support.v4.app,BackStackState,writeToParcel,p1, Android.OS.ParcelableWriteFlags
-0,android.support.v4.app,FragmentState,writeToParcel,p1, Android.OS.ParcelableWriteFlags
-0,android.support.v4.app,FragmentManagerState,writeToParcel,p1, Android.OS.ParcelableWriteFlags
-0,android.support.v4.app,Fragment.SavedState,writeToParcel,p1, Android.OS.ParcelableWriteFlags

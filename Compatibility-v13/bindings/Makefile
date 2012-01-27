@@ -34,9 +34,8 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll: $(
 		-sdk-platform=$* \
 		-jar=$< \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Compatibility.v13.dll" \
-		-use-variable-csv-format \
-		-fixup=metadata \
-		-enumfields=map.csv -enummethods=methodmap.csv -global -v \
+		-fixup=Metadata.xml \
+		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
 		-cscopt -debug+ -cscopt -nowarn:0109,0108 \
 		-droiddoc=developer.android.com/reference \
