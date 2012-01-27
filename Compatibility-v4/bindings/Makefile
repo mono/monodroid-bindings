@@ -10,7 +10,9 @@ platforms_dir := $(BUILDDIR)/platforms
 
 ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll)
 DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Compatibility.v4.xml)
-JAR        = $(ANDROID_SDK_PATH)/extras/android/support/v4/android-support-v4.jar
+JAR        = android-support-v4.jar
+
+VPATH = $(ANDROID_SDK_PATH)/extras/android/support/v4/ $(ANDROID_SDK_PATH)/extras/android/compatibility/v4/
 
 all:: $(JARS) $(ASSEMBLIES) $(DOCS)
 
@@ -21,13 +23,13 @@ SOURCES = \
 	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
 	src/AssemblyInfo.cs
 
-$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: map.csv methodmap.csv metadata $(SOURCES) $(MCW_GEN)
+$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(JAR) map.csv methodmap.csv metadata $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=$* \
-		-jar=$(JAR) \
+		-jar=$< \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Compatibility.v4.dll" \
 		-use-variable-csv-format \
 		-fixup=metadata \
