@@ -1,8 +1,10 @@
 MONO_ANDROID_PATH := /Developer/MonoAndroid/usr
-ANDROID_SDK_PATH  := /opt/android/sdk
 API_LEVELS        := 8
 BUILDDIR          := bin
-topdir            := ../..
+TOP               := ../..
+thisdir           := Compatibility-v4/binding
+
+-include ../../env.config
 
 MCW_GEN           := $(MONO_ANDROID_PATH)/bin/mcw-gen
 
@@ -20,7 +22,7 @@ clean::
 	$(RM) -r $(ASSEMBLIES) obj
 
 SOURCES = \
-	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
+	$(TOP)/src/Android.Support.V4.Content/CursorLoader.cs \
 	src/AssemblyInfo.cs
 
 $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(JAR) map.csv methodmap.csv metadata $(SOURCES) $(MCW_GEN)

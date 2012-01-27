@@ -1,0 +1,71 @@
+#!/bin/bash
+usage()
+{
+cat <<EOF
+Usage:
+  --with-mfa-path=PATH          default: $(MONO_ANDROID_PATH)
+
+EOF
+}
+
+
+if [ -z $ANDROID_SDK_PATH ]; then
+    echo "----------------------------------------------";
+    echo "Cannot find android sdk path.";
+    echo "set the ANDROID_SDK_PATH env var";
+    echo "----------------------------------------------";
+	usage
+	exit 1
+fi
+
+echo "Configuring..."
+
+cat >config.log <<EOF
+  $ $0 $@
+EOF
+
+
+CNF=env.config
+SH=env.sh
+
+cnf_append()
+{
+	printf "%-30s := %s\n" "$1" "$2" >> $CNF
+}
+
+sh_append()
+{
+	printf "%s=%s\n" "$1" "$2" >> $SH
+}
+
+MONO_ANDROID_PATH="/Developer/MonoAndroid/usr"
+BUILDDIR="bin"
+
+for arg; do
+  case "$arg" in
+	--help | -h)
+		usage
+		exit 1
+  	  ;;
+	--with-mfa-path=*)
+	  MONO_ANDROID_PATH=$(echo $arg|sed -e 's,.*=,,')
+	  ;;
+  esac
+done
+
+rm -f $CNF
+rm -f $SH
+
+cnf_append "ANDROID_SDK_PATH" "$ANDROID_SDK_PATH"
+sh_append "ANDROID_SDK_PATH" "$ANDROID_SDK_PATH"
+cnf_append "MONO_ANDROID_PATH" "$MONO_ANDROID_PATH"
+sh_append "MONO_ANDROID_PATH" "$MONO_ANDROID_PATH"
+cnf_append "TOP" "$(pwd)"
+sh_append "TOP" "$(pwd)"
+
+cnf_append "BUILDDIR" "$(pwd)/$BUILDDIR"
+sh_append "BUILDDIR" "$(pwd)/$BUILDDIR"
+cat <<EOF
+
+Configuration done.
+EOF
