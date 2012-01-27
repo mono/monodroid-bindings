@@ -25,7 +25,7 @@ SOURCES = \
 $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.xml methodmap.xml Maps.fixup $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
-	$(MCW_GEN) \
+	if [ 15 -eq $* ] ; then $(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=$* \
 		-jar=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/libs/maps.jar \
@@ -33,8 +33,19 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 		-fixup=Maps.fixup \
 		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
 		-o obj/platform-$* \
-		-javadoc=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/$(if $$(findstr 15,$*),maps_apis,reference) \
-		-cscopt -debug+ $(SOURCES:%=-cscopt "%")
+		-javadoc=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/maps_apis \
+		-cscopt -debug+ $(SOURCES:%=-cscopt "%") ; \
+	else $(MCW_GEN) \
+		-sdk-dir="$(ANDROID_SDK_PATH)" \
+		-sdk-platform=$* \
+		-jar=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/libs/maps.jar \
+		-dll="$(platforms_dir)/android-$*/Mono.Android.GoogleMaps.dll" \
+		-fixup=Maps.fixup \
+		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
+		-o obj/platform-$* \
+		-javadoc=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/reference \
+		-cscopt -debug+ $(SOURCES:%=-cscopt "%") ; \
+	fi
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll fieldmap.xml Maps.fixup
 	$(RM) -R obj/platform-$*/docs
