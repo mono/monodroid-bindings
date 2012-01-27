@@ -38,6 +38,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(J
 		-enumfields=map.csv -enummethods=methodmap.csv -global -v \
 		-o obj/platform-$* \
 		-cscopt -debug+ -cscopt -nowarn:0109,0108 \
+		-droiddoc=developer.android.com/reference \
 		$(SOURCES:%=-cscopt "%")
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll map.csv metadata
