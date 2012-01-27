@@ -1,8 +1,9 @@
 MONO_ANDROID_PATH := /Developer/MonoAndroid/usr
+ANDROID_SDK_PATH  := /opt/android/sdk
 API_LEVELS        := 14
 BUILDDIR          := bin
 TOP               := ../..
-thisdir           := Compatibility-v13/binding
+thisdir           := Compatibility-v13/bindings
 
 -include ../../env.config
 

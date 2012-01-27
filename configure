@@ -3,19 +3,17 @@ usage()
 {
 cat <<EOF
 Usage:
-  --with-mfa-path=PATH          default: $(MONO_ANDROID_PATH)
+  --with-mfa-path=PATH          Mono for Android directory (default: /Developer/MonoAndroid/usr)
+  --out                         output directory (default: bin/)
+  --with-android-path           Android SDK path (default: /opt/android/sdk)
+  --api-levels                  Space-separated list of supported api levels (default: 8)
+
 
 EOF
 }
 
-
 if [ -z $ANDROID_SDK_PATH ]; then
-    echo "----------------------------------------------";
-    echo "Cannot find android sdk path.";
-    echo "set the ANDROID_SDK_PATH env var";
-    echo "----------------------------------------------";
-	usage
-	exit 1
+ANDROID_SDK_PATH=/opt/android/sdk
 fi
 
 echo "Configuring..."
@@ -40,6 +38,7 @@ sh_append()
 
 MONO_ANDROID_PATH="/Developer/MonoAndroid/usr"
 BUILDDIR="bin"
+API_LEVELS=8
 
 for arg; do
   case "$arg" in
@@ -47,11 +46,30 @@ for arg; do
 		usage
 		exit 1
   	  ;;
+	--out=*)
+	  BUILDDIR=$(echo $arg|sed -e 's,.*=,,')
+	  ;;
 	--with-mfa-path=*)
 	  MONO_ANDROID_PATH=$(echo $arg|sed -e 's,.*=,,')
 	  ;;
+	--with-android-path=*)
+	  ANDROID_SDK_PATH=$(echo $arg|sed -e 's,.*=,,')
+	  ;;
+	--api-levels=*)
+	  API_LEVELS=$(echo $arg|sed -e 's,.*=,,')
+	  ;;
   esac
 done
+
+if [ ! -d $ANDROID_SDK_PATH ]; then
+    echo "----------------------------------------------";
+    echo "Cannot find android sdk path.";
+    echo "set the ANDROID_SDK_PATH env var";
+    echo "----------------------------------------------";
+	usage
+	exit 1
+fi
+
 
 rm -f $CNF
 rm -f $SH
@@ -60,9 +78,10 @@ cnf_append "ANDROID_SDK_PATH" "$ANDROID_SDK_PATH"
 sh_append "ANDROID_SDK_PATH" "$ANDROID_SDK_PATH"
 cnf_append "MONO_ANDROID_PATH" "$MONO_ANDROID_PATH"
 sh_append "MONO_ANDROID_PATH" "$MONO_ANDROID_PATH"
+cnf_append "API_LEVELS" "$API_LEVELS"
+sh_append "API_LEVELS" "$API_LEVELS"
 cnf_append "TOP" "$(pwd)"
 sh_append "TOP" "$(pwd)"
-
 cnf_append "BUILDDIR" "$(pwd)/$BUILDDIR"
 sh_append "BUILDDIR" "$(pwd)/$BUILDDIR"
 cat <<EOF

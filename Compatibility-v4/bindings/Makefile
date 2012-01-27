@@ -2,7 +2,7 @@ MONO_ANDROID_PATH := /Developer/MonoAndroid/usr
 API_LEVELS        := 8
 BUILDDIR          := bin
 TOP               := ../..
-thisdir           := Compatibility-v4/binding
+thisdir           := Compatibility-v4/bindings
 
 -include ../../env.config
 

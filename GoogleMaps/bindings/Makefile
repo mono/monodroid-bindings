@@ -2,8 +2,12 @@ MONO_ANDROID_PATH := /Developer/MonoAndroid/usr
 ANDROID_SDK_PATH  := /opt/android/sdk
 API_LEVELS        := 8
 BUILDDIR          := bin
+TOP               := ../..
+thisdir           := GoogleMaps/bindings
 
-MCW_GEN           := $(MONO_ANDROID_PATH)/bin/mcw-gen
+-include ../../env.config
+
+MCW_GEN       := $(MONO_ANDROID_PATH)/bin/mcw-gen
 
 platforms_dir := $(BUILDDIR)/platforms
 
@@ -39,7 +43,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
 		-o obj/platform-$* \
 		-javadoc="$$DOCS" \
-		-cscopt -debug+ $(SOURCES:%=-cscopt "%") ; \
+		-cscopt -debug+ $(SOURCES:%=-cscopt "%")
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll fieldmap.xml Maps.fixup
 	$(RM) -R obj/platform-$*/docs
