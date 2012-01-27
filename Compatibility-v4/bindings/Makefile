@@ -53,6 +53,6 @@ $(MCW_GEN):
 	exit 1
 
 $(JAR):
-	@echo "Please install the \"Android Support package\"."
-	exit 1
+	@echo "Please install \"Extras > Android Support package\" within the \`android\` utility to build Compatibility-v4."
+	@exit 1
 

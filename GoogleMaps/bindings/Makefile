@@ -59,5 +59,5 @@ $(MCW_GEN):
 	exit 1
 
 $(JARS):
-	@echo "Please install the \"Google APIs by Google Inc.\" package for API level(s) $(API_LEVELS)."
-	exit 1
+	@echo "Please install the \"Android (API $(API_LEVELS)) > Google APIs by Google Inc.\" package within the \`android\` utility to build GoogleMaps."
+	@exit 1
