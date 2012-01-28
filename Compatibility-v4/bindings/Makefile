@@ -25,7 +25,7 @@ SOURCES = \
 	$(TOP)/src/Android.Support.V4.Content/CursorLoader.cs \
 	src/AssemblyInfo.cs
 
-$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(JAR) map.csv methodmap.csv metadata $(SOURCES) $(MCW_GEN)
+$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
