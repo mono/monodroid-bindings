@@ -1,6 +1,4 @@
-MONO_ANDROID_PATH := /Developer/MonoAndroid/usr
-ANDROID_SDK_PATH  := /opt/android/sdk
-API_LEVELS        := 14
+API_LEVELS        := 13
 BUILDDIR          := bin
 TOP               := ../..
 thisdir           := Compatibility-v13/bindings
@@ -38,10 +36,10 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll: $(
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
 		-cscopt -debug+ -cscopt -nowarn:0109,0108 \
-		-droiddoc=developer.android.com/reference \
+		-droiddoc=../../api-docs/developer.android.com/reference \
 		$(SOURCES:%=-cscopt "%")
 
-$(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll map.csv metadata
+$(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll EnumMethods.xml Metadata.xml
 	$(RM) -R obj/platform-$*/docs
 	-mkdir -p obj/platform-$*/docs
 	-cp -R Documentation/en obj/platform-$*/docs

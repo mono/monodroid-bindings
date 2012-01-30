@@ -1,6 +1,4 @@
 ﻿<enum-method-mappings>
-  <map package="android.support.v4.app" class="BackStackState" method="writeToParcel" parameter="p1" enum="Android.OS.ParcelableWriteFlags" />
-  <map package="android.support.v4.app" class="FragmentState" method="writeToParcel" parameter="p1" enum="Android.OS.ParcelableWriteFlags" />
-  <map package="android.support.v4.app" class="FragmentManagerState" method="writeToParcel" parameter="p1" enum="Android.OS.ParcelableWriteFlags" />
   <map package="android.support.v4.app" class="Fragment.SavedState" method="writeToParcel" parameter="p1" enum="Android.OS.ParcelableWriteFlags" />
+  <map package="android.support.v4.app" class="Fragment.SavedState" method="writeToParcel" parameter="flags" enum="Android.OS.ParcelableWriteFlags" />
 </enum-method-mappings>

@@ -1,4 +1,7 @@
 <metadata>
+  <remove-node path="/api/package[@name='android.support.v4.app']/class[@name='BackStackState']" />
+  <remove-node path="/api/package[@name='android.support.v4.app']/class[@name='FragmentState']" />
+  <remove-node path="/api/package[@name='android.support.v4.app']/class[@name='FragmentManagerState']" />
   <remove-node path="/api/package[@name='android.support.v4.widget']/class[@name='CursorAdapter']/implements[@name='android.support.v4.widget.CursorFilter.CursorFilterClient']" />
   <remove-node path="/api/package[@name='android.support.v4.widget']/class[@name='CursorAdapter']/field[@name='mCursorFilter']" />
 
@@ -13,6 +16,7 @@
   <remove-node path="/api/package[@name='android.support.v4.view.accessibility']/class[@name='AccessibilityNodeInfoCompat.AccessibilityNodeInfoIcsImpl']" />
   <remove-node path="/api/package[@name='android.support.v4.widget']/class[@name='CursorAdapter']" />
   <remove-node path="/api/package[@name='android.support.v4.widget']/class[@name='CursorAdapter.ChangeObserver']" />
+  <remove-node path="/api/package[@name='android.support.v4.view.accessibility']/class[@name='AccessibilityNodeInfoCompat.AccessibilityNodeInfoIcsImpl']" />
   <remove-node path="/api/package[@name='android.support.v4.view.accessibility']/class[@name='AccessibilityNodeInfoCompat.AccessibilityNodeInfoStubImpl']" />
   <remove-node path="/api/package[@name='android.support.v4.view']/interface[@name='ViewPager.OnAdapterChangeListener']" />
 </metadata>
