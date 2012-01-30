@@ -40,7 +40,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(J
 		-droiddoc=../../api-docs/developer.android.com/reference \
 		$(SOURCES:%=-cscopt "%")
 
-$(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll map.csv metadata
+$(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll EnumFields.xml Metadata.xml
 	$(RM) -R obj/platform-$*/docs
 	-mkdir -p obj/platform-$*/docs
 	-cp -R Documentation/en obj/platform-$*/docs
