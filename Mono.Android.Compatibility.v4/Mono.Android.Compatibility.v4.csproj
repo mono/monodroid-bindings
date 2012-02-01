@@ -45,17 +45,17 @@
     <InputJar Include="Java\android-support-v4.jar" />
   </ItemGroup>
   <ItemGroup>
-    <FixupFile Include="Transforms\Metadata.xml">
+    <TransformFile Include="Transforms\Metadata.xml">
       <SubType>Designer</SubType>
-    </FixupFile>
+    </TransformFile>
   </ItemGroup>
   <ItemGroup>
-    <EnumFieldFile Include="Transforms\EnumFields.xml">
+    <TransformFile Include="Transforms\EnumFields.xml">
       <SubType>Designer</SubType>
-    </EnumFieldFile>
-    <EnumMethodFile Include="Transforms\EnumMethods.xml">
+    </TransformFile>
+    <TransformFile Include="Transforms\EnumMethods.xml">
       <SubType>Designer</SubType>
-    </EnumMethodFile>
+    </TransformFile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
