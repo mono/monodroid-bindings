@@ -14,9 +14,15 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
 
   <remove-node path="/api/package[@name='android.support.v4.view.accessibility']/class[@name='AccessibilityNodeInfoCompat.AccessibilityNodeInfoIcsImpl']" />
-  <remove-node path="/api/package[@name='android.support.v4.widget']/class[@name='CursorAdapter']" />
   <remove-node path="/api/package[@name='android.support.v4.widget']/class[@name='CursorAdapter.ChangeObserver']" />
   <remove-node path="/api/package[@name='android.support.v4.view.accessibility']/class[@name='AccessibilityNodeInfoCompat.AccessibilityNodeInfoIcsImpl']" />
   <remove-node path="/api/package[@name='android.support.v4.view.accessibility']/class[@name='AccessibilityNodeInfoCompat.AccessibilityNodeInfoStubImpl']" />
   <remove-node path="/api/package[@name='android.support.v4.view']/interface[@name='ViewPager.OnAdapterChangeListener']" />
+
+  <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='initLoader']/parameter[@name='p2']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
+  <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='initLoader']/parameter[@name='callback']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
+  <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='initLoader']" name="return">android.support.v4.content.Loader</attr>
+  <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']/parameter[@name='p2']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
+  <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']/parameter[@name='callback']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
+  <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']" name="return">android.support.v4.content.Loader</attr>
 </metadata>
