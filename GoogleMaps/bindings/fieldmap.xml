@@ -1,12 +1,12 @@
 <enum-field-mappings>
-  <type enum-type="Android\GoogleMaps\MapDataSource" java-class="com/google/android/maps/MapActivity">
-    <member enum="China" java="MAP_DATA_SOURCE_CHINA" value="1" />
-    <member enum="Default" java="MAP_DATA_SOURCE_Default" value="0" />
-  </type>
-  <type enum-type="Android\GoogleMaps\ItemState" java-class="com/google/android/maps/OverlayItem">
-    <member enum="Focused" java="ITEM_STATE_FOCUSED_MASK" value="4" />
-    <member enum="Pressed" java="ITEM_STATE_PRESSED_MASK" value="1" />
-    <member enum="Selected" java="ITEM_STATE_SELECTED_MASK" value="2" />
-  </type>
+  <mapping jni-class="com/google/android/maps/MapActivity" clr-enum-type="Android.GoogleMaps.MapDataSource">
+    <field jni-name="MAP_DATA_SOURCE_CHINA"    clr-name="China"    value="1" />
+    <field jni-name="MAP_DATA_SOURCE_DEFAULT"  clr-name="Default"  value="0" />
+  </mapping>
+  <mapping jni-class="com/google/android/maps/MapActivity" clr-enum-type="Android.GoogleMaps.ItemState">
+    <field jni-name="ITEM_STATE_FOCUSED_MASK"  clr-name="Focused"  value="4" />
+    <field jni-name="ITEM_STATE_PRESSED_MASK"  clr-name="Pressed"  value="1" />
+    <field jni-name="ITEM_STATE_SELECTED_MASK" clr-name="Selected" value="2" />
+  </mapping>
 </enum-field-mappings>
 

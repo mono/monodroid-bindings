@@ -1,9 +1,17 @@
 <enum-method-mappings>
-  <map package="com.google.android.maps" class="MapController" method="onKey" parameter="keyCode" enum="Android.Views.Keycode" />
-  <map package="com.google.android.maps" class="MapActivity" method="onGetMapDataSource" parameter="return" enum="Com.Google.Android.Maps.MapDataSource" />
-  <map package="com.google.android.maps" class="OverlayItem" method="getMarker" parameter="stateBitset" enum="Com.Google.Android.Maps.ItemState" />
-  <map package="com.google.android.maps" class="MyLocationOverlay" method="onStatusChanged" parameter="status" enum="Android.Locations.Availability" />
-  <map package="com.google.android.maps" class="MyLocationOverlay" method="onAccuracyChanged" parameter="sensor" enum="Android.Hardware.SensorType" />
-  <map package="com.google.android.maps" class="MyLocationOverlay" method="onAccuracyChanged" parameter="accuracy" enum="Android.Hardware.SensorStatus" />
-  <map package="com.google.android.maps" class="MyLocationOverlay" method="onSensorChanged" parameter="sensor" enum="Android.Hardware.SensorType" />
+  <mapping jni-class="com/google/android/maps/MapController">
+		<method jni-name="onKey"              parameter="keyCode"     clr-enum-type="Android.Views.Keycode" />
+	</mapping>
+  <mapping jni-class="com/google/android/maps/MapActivity">
+		<method jni-name="onGetMapDataSource" parameter="return"      clr-enum-type="Com.Google.Android.Maps.MapDataSource" />
+	</mapping>
+  <mapping jni-class="com/google/android/maps/OverlayItem">
+		<method jni-name="getMarker"          parameter="stateBitset" clr-enum-type="Com.Google.Android.Maps.ItemState" />
+	</mapping>
+  <mapping jni-class="com/google/android/maps/MyLocationOverlay">
+		<method jni-name="onStatusChanged"    parameter="status"      clr-enum-type="Android.Locations.Availability" />
+  	<method jni-name="onAccuracyChanged"  parameter="sensor"      clr-enum-type="Android.Hardware.SensorType" />
+  	<method jni-name="onAccuracyChanged"  parameter="accuracy"    clr-enum-type="Android.Hardware.SensorStatus" />
+  	<method jni-name="onSensorChanged"    parameter="sensor"      clr-enum-type="Android.Hardware.SensorType" />
+	</mapping>
 </enum-method-mappings>
