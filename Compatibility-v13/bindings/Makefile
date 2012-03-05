@@ -29,7 +29,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll: $(
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
-		-sdk-platform=$* \
+		-sdk-platform=13 \
 		-jar=$< \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Compatibility.v13.dll" \
 		-fixup=Metadata.xml \
