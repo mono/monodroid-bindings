@@ -13,7 +13,10 @@ platforms_dir := $(BUILDDIR)/platforms
 
 ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll)
 DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml)
-JARS       = $(patsubst %,$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-%/libs/maps.jar,$(filter-out any,$(API_LEVELS)))
+JARS       = $(shell find $(ANDROID_SDK_PATH) -name maps.jar)
+
+ADDONDIRS=$(patsubst %/libs/maps.jar,%,$(JARS))
+ADDONDIR=$(shell echo $(firstword $(ADDONDIRS)) | sed -e 's/^\(.*-\).*$$/\1/')
 
 all:: $(JARS) $(ASSEMBLIES) $(DOCS)
 
@@ -30,16 +33,16 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
 	if [ "any" = "$*" ]; then \
-		DOCS="$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$(API_ANY_LEVEL)/docs/maps_apis"; \
+		DOCS="$(ADDONDIR)$(ANY_LEVEL_API)/docs/maps_apis"; \
 	elif [ "$*" -ge "15" ]; then \
-		DOCS="$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/maps_apis"; \
+		DOCS="$(ADDONDIR)$*/docs/maps_apis"; \
 	else \
-		DOCS="$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$*/docs/reference"; \
+		DOCS="$(ADDONDIR)$*/docs/reference"; \
 	fi; \
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=$* \
-		-jar=$(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-$(if $(findstring any,$*),$(API_ANY_LEVEL),$*)/libs/maps.jar \
+		-jar=$(ADDONDIR)$(if $(findstring any,$*),$(API_ANY_LEVEL),$*)/libs/maps.jar \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.GoogleMaps.dll" \
 		-fixup=Maps.fixup \
 		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
