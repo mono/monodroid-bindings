@@ -32,9 +32,7 @@ SOURCES = \
 $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.xml methodmap.xml Maps.fixup $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
-	if [ "any" = "$*" ]; then \
-		DOCS="$(ADDONDIR)$(ANY_LEVEL_API)/docs/maps_apis"; \
-	elif [ "$*" -ge "15" ]; then \
+	if [ "$*" -ge "15" ]; then \
 		DOCS="$(ADDONDIR)$*/docs/maps_apis"; \
 	else \
 		DOCS="$(ADDONDIR)$*/docs/reference"; \
@@ -42,7 +40,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=$* \
-		-jar=$(ADDONDIR)$(if $(findstring any,$*),$(API_ANY_LEVEL),$*)/libs/maps.jar \
+		-jar=$(ADDONDIR)$*/libs/maps.jar \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.GoogleMaps.dll" \
 		-fixup=Maps.fixup \
 		-enumfields=fieldmap.xml -enummethods=methodmap.xml -global -v \
