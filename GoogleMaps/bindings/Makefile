@@ -14,7 +14,7 @@ platforms_dir := $(BUILDDIR)/platforms
 
 ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll)
 DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml)
-JARS       = $(shell find $(ANDROID_SDK_PATH) -name maps.jar)
+JARS       = $(shell find $(ANDROID_SDK_PATH)/ -name maps.jar)
 
 ADDONDIRS=$(patsubst %/libs/maps.jar,%,$(JARS))
 ADDONDIR=$(shell echo $(firstword $(ADDONDIRS)) | sed -e 's/^\(.*-\).*$$/\1/')
