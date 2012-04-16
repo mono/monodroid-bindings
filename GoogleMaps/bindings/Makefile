@@ -47,7 +47,7 @@ endef
 API_DESCRIPTIONS_IN := $(call get-descriptions.in-to-merge,$(lastword $(API_LEVELS)))
 API_DESCRIPTIONS    := $(call get-descriptions-to-merge,$(lastword $(API_LEVELS)))
 
-$(API_DESCRIPTIONS_IN): obj/android-%/api.xml.in: $(ANDROID_SDK_PATH)/add-ons/addon-google_apis-google_inc_-%/libs/maps.jar $(MCW_GEN)
+$(API_DESCRIPTIONS_IN): obj/android-%/api.xml.in: $(ADDONDIR)%/libs/maps.jar $(MCW_GEN)
 	-mkdir -p obj/android-$*
 	$(MCW_GEN) describe \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
