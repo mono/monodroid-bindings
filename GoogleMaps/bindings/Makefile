@@ -6,6 +6,7 @@ TOP               := ../..
 thisdir           := GoogleMaps/bindings
 
 -include ../../env.config
+-include $(TOP)/mk/helper.mk
 
 SMCS          := $(MONO_ANDROID_PATH)/bin/smcs
 MCW_GEN       := $(MONO_ANDROID_PATH)/bin/mcw-gen
@@ -72,7 +73,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 		-i obj/android-$*/api.xml \
 		-o obj/android-$*
 	$(SMCS) -target:library -out:$@ -debug+ obj/android-$*/src/generated/*.cs $(SOURCES) \
-		-r:$(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$*/Mono.Android.dll
+		-r:$(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$*/Mono.Android.dll $(SIGNOPTS)
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll fieldmap.xml Maps.fixup
 	$(RM) -R obj/android-$*/docs

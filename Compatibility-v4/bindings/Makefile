@@ -5,6 +5,7 @@ TOP               := ../..
 thisdir           := Compatibility-v4/bindings
 
 -include ../../env.config
+-include $(TOP)/mk/helper.mk
 
 MCW_GEN           := $(MONO_ANDROID_PATH)/bin/mcw-gen
 
@@ -22,7 +23,7 @@ clean::
 	$(RM) -r $(ASSEMBLIES) obj
 
 SOURCES = \
-	$(TOP)/src/Android.Support.V4.Content/CursorLoader.cs \
+	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
 	src/AssemblyInfo.cs
 
 $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
@@ -36,7 +37,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(J
 		-fixup=Metadata.xml \
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
-		-cscopt -debug+ -cscopt -nowarn:0109,0108 \
+		-cscopt -debug+ -cscopt -nowarn:0109,0108 $(SIGNOPTS:%=-cscopt %) \
 		-droiddoc=../../api-docs/developer.android.com/reference \
 		$(SOURCES:%=-cscopt "%")
 
