@@ -11,8 +11,8 @@ MCW_GEN           := $(MONO_ANDROID_PATH)/bin/mcw-gen
 
 platforms_dir := $(BUILDDIR)/platforms
 
-ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll)
-DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Compatibility.v4.xml)
+ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Support.v4.dll)
+DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Support.v4.xml)
 JAR        = android-support-v4.jar
 
 VPATH = $(ANDROID_SDK_PATH)/extras/android/support/v4/ $(ANDROID_SDK_PATH)/extras/android/compatibility/v4/
@@ -26,14 +26,14 @@ SOURCES = \
 	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
 	src/AssemblyInfo.cs
 
-$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
+$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v4.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=$* \
 		-jar=$< \
-		-dll="$(platforms_dir)/android-$*/Mono.Android.Compatibility.v4.dll" \
+		-dll="$(platforms_dir)/android-$*/Mono.Android.Support.v4.dll" \
 		-fixup=Metadata.xml \
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
@@ -41,7 +41,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll: $(J
 		-droiddoc=../../api-docs/developer.android.com/reference \
 		$(SOURCES:%=-cscopt "%")
 
-$(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v4.dll EnumFields.xml Metadata.xml
+$(DOCS): $(platforms_dir)/android-%/Mono.Android.Support.v4.xml: $(platforms_dir)/android-%/Mono.Android.Support.v4.dll EnumFields.xml Metadata.xml
 	$(RM) -R obj/platform-$*/docs
 	-mkdir -p obj/platform-$*/docs
 	-cp -R Documentation/en obj/platform-$*/docs
@@ -53,6 +53,6 @@ $(MCW_GEN):
 	exit 1
 
 $(JAR):
-	@echo "Please install \"Extras > Android Support package\" within the \`android\` utility to build Compatibility-v4."
+	@echo "Please install \"Extras > Android Support package\" within the \`android\` utility to build Support-v4."
 	@exit 1
 

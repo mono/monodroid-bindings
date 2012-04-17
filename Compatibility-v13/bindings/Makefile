@@ -10,8 +10,8 @@ MCW_GEN           := $(MONO_ANDROID_PATH)/bin/mcw-gen
 
 platforms_dir := $(BUILDDIR)/platforms
 
-ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll)
-DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Compatibility.v13.xml)
+ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Support.v13.dll)
+DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.Support.v13.xml)
 JAR        = android-support-v13.jar
 
 VPATH = $(ANDROID_SDK_PATH)/extras/android/support/v13/ $(ANDROID_SDK_PATH)/extras/android/compatibility/v13/
@@ -25,14 +25,14 @@ SOURCES = \
 	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
 	src/AssemblyInfo.cs
 
-$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
+$(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
 	-mkdir -p $(platforms_dir)/android-$*
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=13 \
 		-jar=$< \
-		-dll="$(platforms_dir)/android-$*/Mono.Android.Compatibility.v13.dll" \
+		-dll="$(platforms_dir)/android-$*/Mono.Android.Support.v13.dll" \
 		-fixup=Metadata.xml \
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
@@ -40,7 +40,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll: $(
 		-droiddoc=../../api-docs/developer.android.com/reference \
 		$(SOURCES:%=-cscopt "%")
 
-$(DOCS): $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.xml: $(platforms_dir)/android-%/Mono.Android.Compatibility.v13.dll EnumMethods.xml Metadata.xml
+$(DOCS): $(platforms_dir)/android-%/Mono.Android.Support.v13.xml: $(platforms_dir)/android-%/Mono.Android.Support.v13.dll EnumMethods.xml Metadata.xml
 	$(RM) -R obj/platform-$*/docs
 	-mkdir -p obj/platform-$*/docs
 	-cp -R Documentation/en obj/platform-$*/docs
