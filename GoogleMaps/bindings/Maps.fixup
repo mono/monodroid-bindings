@@ -1,3 +1,15 @@
 <metadata>
   <attr path="/api/package[@name='com.google.android.maps']" name="managedName">Android.GoogleMaps</attr>
+
+  <!--
+  These setter methods were incorrectly treated as public, but they are actually protected.
+  Getters are public and generator used to ignore mismatching visibility.
+  
+  Unfortunately, there is no way to define "partial" properties and we cannot
+  manually add setter-only properties in other sources.
+  So far the only way to fix it is, to fake API and treat them as public.
+  
+  Note that this is only for API compatibility and usually people should not follow this sort of hacks!
+  -->
+  <attr path="/api/package[@name='com.google.android.maps']/class[@name='ItemizedOverlay']/method[@name='setLastFocusedIndex']" name="visibility">public</attr>
 </metadata>

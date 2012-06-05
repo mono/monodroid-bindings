@@ -29,6 +29,7 @@ clean::
 
 SOURCES = \
 	src/AssemblyInfo.cs \
+	src/Android.GoogleMaps/ItemizedOverlay.cs \
 	src/Android.GoogleMaps/MapController.cs \
 	src/Android.GoogleMaps/MyLocationOverlay.cs \
 	src/Android.GoogleMaps/TrackballGestureDetector.cs
