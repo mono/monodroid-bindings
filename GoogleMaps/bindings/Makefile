@@ -15,14 +15,10 @@ platforms_dir := $(BUILDDIR)/platforms
 
 ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll)
 DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml)
-JARS       = $(shell find $(ANDROID_SDK_PATH)/ -name maps.jar)
-
-ADDONDIRS=$(patsubst %/libs/maps.jar,%,$(JARS))
-ADDONDIR=$(shell echo $(firstword $(ADDONDIRS)) | sed -e 's/^\(.*-\).*$$/\1/')
 
 LEVELS = . . . 4 . . 7 8 . 10 . 12 13 14 15 16 17 18 19 20
 
-all:: $(JARS) $(ASSEMBLIES) $(DOCS)
+all:: $(ASSEMBLIES) $(DOCS)
 
 clean::
 	$(RM) -r $(ASSEMBLIES) obj
@@ -46,17 +42,25 @@ define get-descriptions.in-to-merge
 	$(patsubst %,obj/android-%/api.xml.in,$(call get-levels-to-merge,$(1)))
 endef
 
+define get-maps.jar-path
+$(strip $(shell find $(ANDROID_SDK_PATH)/ -path \*$(1)/libs/maps.jar | grep '\<$(1)\>'))
+endef
+
 API_DESCRIPTIONS_IN := $(call get-descriptions.in-to-merge,$(lastword $(API_LEVELS)))
 API_DESCRIPTIONS    := $(call get-descriptions-to-merge,$(lastword $(API_LEVELS)))
 
-$(API_DESCRIPTIONS_IN): obj/android-%/api.xml.in: $(ADDONDIR)%/libs/maps.jar $(MCW_GEN)
+$(API_DESCRIPTIONS_IN): obj/android-%/api.xml.in: $(MCW_GEN)
 	-mkdir -p obj/android-$*
+	@jar=$(call get-maps.jar-path,$*); \
+	if [ ! -f "$$jar" ]; then \
+		echo "Please install the \"Android (API $(API_LEVELS)) > Google APIs by Google Inc.\" package within the \`android\` utility to build GoogleMaps." ; \
+	fi ; \
 	$(MCW_GEN) describe \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=$* \
-		-javadoc="$(wildcard $(ADDONDIR)$*/docs/maps_apis $(ADDONDIR)$*/docs/reference)" \
+		-javadoc="$$(ls -d `dirname "$$jar"`/../docs/maps_apis `dirname "$$jar"`/../docs/reference 2>/dev/null)" \
 		-o "$@" \
-		$(ADDONDIR)$*/libs/maps.jar
+		$$jar
 
 $(API_DESCRIPTIONS): obj/android-%/api.xml: $(call get-descriptions.in-to-merge,$(lastword $(API_LEVELS))) $(MCW_GEN)
 	$(MCW_GEN) merge -v -o "$@" $(call get-descriptions.in-to-merge,$*)
@@ -87,6 +91,3 @@ $(MCW_GEN):
 	@echo "Building bindings requires Mono for Android 4.2 or later."
 	exit 1
 
-$(JARS):
-	@echo "Please install the \"Android (API $(API_LEVELS)) > Google APIs by Google Inc.\" package within the \`android\` utility to build GoogleMaps."
-	@exit 1
