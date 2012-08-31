@@ -32,6 +32,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) E
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
 		-sdk-platform=13 \
 		-jar=$< \
+		-embed \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Support.v13.dll" \
 		-fixup=Metadata.xml \
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
