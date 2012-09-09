@@ -1,0 +1,15 @@
+<metadata>
+	<!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->  
+  <attr path="/api/package[@name='com.tapit.adview']" name="managedName">Tapit.Adview</attr>
+  <attr path="/api/package[@name='com.tapit.adview.track']" name="managedName">Tapit.Track</attr>
+  <attr path="/api/package[@name='com.tapit.adview.notif']" name="managedName">Tapit.Notif</attr>
+   <remove-node path="/api/package[@name='com.tapit.adview']/class[@name='AdViewCore']/method[@name='expand']" />
+   <remove-node path="/api/package[@name='com.tapit.adview']/class[@name='AdViewCore']/method[@name='playVideo']" />
+   <remove-node path="/api/package[@name='com.tapit.adview']/class[@name='AdInterstitialBaseView']/method[@name='setUpdateTime']" />
+</metadata>
