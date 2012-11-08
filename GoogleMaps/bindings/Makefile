@@ -84,8 +84,8 @@ $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir
 	$(RM) -R obj/android-$*/docs
 	-mkdir -p obj/android-$*/docs
 	-cp -R Documentation/en obj/android-$*/docs
-	mdoc update -o obj/android-$*/docs $< -L $(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$*
-	mdoc export-msxdoc -o $@ obj/android-$*/docs
+	mdoc update -o obj/android-$*/docs $< -L $(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$* >/dev/null
+	mdoc export-msxdoc -o $@ obj/android-$*/docs >/dev/null
 
 $(MCW_GEN):
 	@echo "Building bindings requires Mono for Android 4.2 or later."

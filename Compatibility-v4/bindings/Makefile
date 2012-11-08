@@ -46,8 +46,8 @@ $(DOCS): $(platforms_dir)/android-%/Mono.Android.Support.v4.xml: $(platforms_dir
 	$(RM) -R obj/platform-$*/docs
 	-mkdir -p obj/platform-$*/docs
 	-cp -R Documentation/en obj/platform-$*/docs
-	mdoc update -o obj/platform-$*/docs $< -L $(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$*
-	mdoc export-msxdoc -o $@ obj/platform-$*/docs
+	mdoc update -o obj/platform-$*/docs $< -L $(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$* >/dev/null
+	mdoc export-msxdoc -o $@ obj/platform-$*/docs >/dev/null
 
 $(MCW_GEN):
 	@echo "Building bindings requires Mono for Android 4.2 or later."
