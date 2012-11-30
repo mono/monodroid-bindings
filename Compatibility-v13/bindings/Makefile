@@ -30,7 +30,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) E
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
-		-sdk-platform=13 \
+		-sdk-platform=$* \
 		-jar=$< \
 		-embed \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Support.v13.dll" \
