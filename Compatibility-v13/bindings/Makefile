@@ -23,6 +23,8 @@ clean::
 
 SOURCES = \
 	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
+	$(topdir)/src/Android.Support.V4.Content/Loader.cs \
+	$(topdir)/src/Android.Support.V4.View/ViewPager.cs \
 	src/AssemblyInfo.cs
 
 $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
@@ -30,7 +32,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) E
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
-		-sdk-platform=$* \
+		-sdk-platform=17 \
 		-jar=$< \
 		-embed \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Support.v13.dll" \
@@ -38,7 +40,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) E
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
 		-cscopt -debug+ -cscopt -nowarn:0109,0108 $(SIGNOPTS:%=-cscopt %) \
-		-droiddoc=../../api-docs/developer.android.com/reference \
+		-droiddoc=$(ANDROID_SDK_PATH)/docs/reference \
 		$(SOURCES:%=-cscopt "%")
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.Support.v13.xml: $(platforms_dir)/android-%/Mono.Android.Support.v13.dll EnumMethods.xml Metadata.xml
