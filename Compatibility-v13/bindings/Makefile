@@ -25,6 +25,8 @@ SOURCES = \
 	$(topdir)/src/Android.Support.V4.Content/CursorLoader.cs \
 	$(topdir)/src/Android.Support.V4.Content/Loader.cs \
 	$(topdir)/src/Android.Support.V4.View/ViewPager.cs \
+	$(topdir)/src/Android.Support.V4.Widget/DrawerLayout.cs \
+	$(topdir)/src/Android.Support.V4.Widget/SlidingPaneLayout.cs \
 	src/AssemblyInfo.cs
 
 $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v13.dll: $(JAR) EnumFields.xml EnumMethods.xml Metadata.xml $(SOURCES) $(MCW_GEN)
