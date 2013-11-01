@@ -26,4 +26,7 @@
   <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']/parameter[@name='p2']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
   <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']/parameter[@name='callback']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
   <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']" name="return">android.support.v4.content.Loader</attr>
+
+  <!-- inherited generic class from generic class -->
+  <remove-node path="/api/package[@name='android.support.v4.util']/class[@name='ArrayMap']" />
 </metadata>
