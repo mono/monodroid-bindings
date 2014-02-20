@@ -35,7 +35,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v4.dll: $(JAR) En
 	-mkdir -p obj/platform-$*
 	$(MCW_GEN) \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
-		-sdk-platform=17 \
+		-sdk-platform=19 \
 		-jar=$< \
 		-embed \
 		-dll="$(platforms_dir)/android-$*/Mono.Android.Support.v4.dll" \
