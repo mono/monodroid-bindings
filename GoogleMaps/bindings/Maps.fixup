@@ -12,4 +12,7 @@
   Note that this is only for API compatibility and usually people should not follow this sort of hacks!
   -->
   <attr path="/api/package[@name='com.google.android.maps']/class[@name='ItemizedOverlay']/method[@name='setLastFocusedIndex']" name="visibility">public</attr>
+
+  <attr path="/api/package/class"       name="deprecated">Please use the Xamarin Component: http://components.xamarin.com/view/googleplayservices</attr>
+  <attr path="/api/package/interface"   name="deprecated">Please use the Xamarin Component: http://components.xamarin.com/view/googleplayservices</attr>
 </metadata>

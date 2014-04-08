@@ -25,4 +25,7 @@
   <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']/parameter[@name='p2']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
   <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']/parameter[@name='callback']" name="type">android.support.v4.app.LoaderManager.LoaderCallbacks</attr>
   <attr path="/api/package[@name='android.support.v4.app']/class[@name='LoaderManager']/method[@name='restartLoader']" name="return">android.support.v4.content.Loader</attr>
+
+  <attr path="/api/package/class"       name="deprecated">Please use the Xamarin Component: http://components.xamarin.com/view/xamandroidsupportv4-18</attr>
+  <attr path="/api/package/interface"   name="deprecated">Please use the Xamarin Component: http://components.xamarin.com/view/xamandroidsupportv4-18</attr>
 </metadata>

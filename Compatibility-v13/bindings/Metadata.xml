@@ -29,4 +29,7 @@
 
   <!-- inherited generic class from generic class -->
   <remove-node path="/api/package[@name='android.support.v4.util']/class[@name='ArrayMap']" />
+
+  <attr path="/api/package/class"       name="deprecated">Please use the Xamarin Component: http://components.xamarin.com/view/xamandroidsupportv13-18</attr>
+  <attr path="/api/package/interface"   name="deprecated">Please use the Xamarin Component: http://components.xamarin.com/view/xamandroidsupportv13-18</attr>
 </metadata>
