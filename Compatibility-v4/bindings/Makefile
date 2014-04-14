@@ -42,7 +42,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.Support.v4.dll: $(JAR) En
 		-fixup=Metadata.xml \
 		-enumfields=EnumFields.xml -enummethods=EnumMethods.xml -global -v \
 		-o obj/platform-$* \
-		-cscopt -debug+ -cscopt -nowarn:0109,0108 $(SIGNOPTS:%=-cscopt %) \
+		-cscopt -debug+ -cscopt -nowarn:0109,0108,0618 $(SIGNOPTS:%=-cscopt %) \
 		-droiddoc=$(ANDROID_SDK_PATH)/docs/reference \
 		$(SOURCES:%=-cscopt "%")
 

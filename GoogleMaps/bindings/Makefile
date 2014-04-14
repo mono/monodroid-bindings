@@ -77,7 +77,7 @@ $(ASSEMBLIES): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll: fieldmap.
 		--global -v \
 		-i obj/android-$*/api.xml \
 		-o obj/android-$*
-	$(SMCS) -target:library -out:$@ -debug+ obj/android-$*/src/generated/*.cs $(SOURCES) \
+	$(SMCS) -target:library -out:$@ -nowarn:0109,0108,0618 -debug+ obj/android-$*/src/generated/*.cs $(SOURCES) \
 		-r:$(MONO_ANDROID_PATH)/lib/mandroid/platforms/android-$*/Mono.Android.dll $(SIGNOPTS)
 
 $(DOCS): $(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml: $(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll fieldmap.xml Maps.fixup
