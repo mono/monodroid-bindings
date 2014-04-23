@@ -59,6 +59,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />
   <ItemGroup>
-    <EmbeddedJar Include="Jars\revmob-6.8.2.jar" />
+    <EmbeddedJar Include="Jars\revmob-6.8.3.jar" />
   </ItemGroup>
 </Project>
