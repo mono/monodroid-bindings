@@ -1,0 +1,53 @@
+﻿<metadata>
+	<!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+ 
+
+   path="/api/package[@name='com.revmob.android']/class[@name='UserInformation']/field[@name='userInformation']"
+
+
+   E:\Users\brads_000\Documents\Projects\RevMob-Bindings\RevMob-Bindings\obj\Debug\generated\src\Com.Revmob.Internal.DownloadManager.cs(23,23): 
+   Error CS0534: 'Com.Revmob.Internal.DownloadManager' does not implement inherited abstract member 'Android.OS.AsyncTask.DoInBackground(params Java.Lang.Object[])' (CS0534) (RevMob-Bindings)
+
+
+  	-->
+
+  	<!--
+  	Error CS0234: The type or namespace name 'IAsyncTaskCompleteListener' does not exist in the namespace 'Com.Revmob.Internal'
+  	(are you missing an assembly reference?) (CS0234) (RevMob-Bindings)
+
+
+
+  	id_ctor_Landroid_app_Activity_Ljava_lang_String_Ljava_lang_String_Lcom_revmob_internal_AsyncTaskCompleteListener_
+
+  		  <attr path="/api/package[@name='com.revmob']" name="managedName">RevMobBinding</attr>
+  		  <attr path="/api/package[@name='com.revmob.ads']" name="managedName">RevMobBinding.Ads</attr>
+
+  	 <remove-node path="/api/package[@name='com.revmob.internal']" />
+  	-->
+
+
+  	 <remove-node path="/api/package[@name='com.revmob.internal']/class[@name='RevMobSoundPlayer']" />
+  	 <remove-node path="/api/package[@name='com.revmob.internal']/class[@name='DownloadManager']" />
+  	 <remove-node path="/api/package[@name='com.revmob.internal']/class[@name='MarketAsyncManager']" />
+
+  	<attr path="/api/package[@name='com.revmob.android']/class[@name='UserInformation']/field[@name='userInformation']" name="managedName">UserInformationObject</attr>
+
+
+  	 <!---  	 
+  	 <attr path="/api/package[@name='com.revmob.internal']/class[@name='RMLog']/method[@name='d']" name="name">Debug</attr>
+  	 path="/api/package[@name='com.revmob.internal']/class[@name='RMLog']/method[@name='d' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+  	<remove-node path="/api/package[@name='com.revmob.internal']/interface[@name='AsyncTaskCompleteListener']" />
+
+	<attr path="//parameter[@type='void...']" name="type">java.lang.Void[]</attr>
+
+	
+
+  	<attr path="/api/package[@name='com.sec.android.ad.state']/interface[@name='AdHubView.TimerListener']" name="managedName">IAdHubViewTimerListenerSupport</attr>
+  	-->
+
+</metadata>

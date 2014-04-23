@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevMob-Sample", "RevMob-Sample\RevMob-Sample.csproj", "{9396891A-23DD-46A9-B85F-CB43220C1737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevMob-Bindings", "..\binding\RevMob-Bindings.csproj", "{46358B34-BA90-4116-83FB-749854C0D8EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46358B34-BA90-4116-83FB-749854C0D8EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46358B34-BA90-4116-83FB-749854C0D8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46358B34-BA90-4116-83FB-749854C0D8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46358B34-BA90-4116-83FB-749854C0D8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9396891A-23DD-46A9-B85F-CB43220C1737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9396891A-23DD-46A9-B85F-CB43220C1737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9396891A-23DD-46A9-B85F-CB43220C1737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9396891A-23DD-46A9-B85F-CB43220C1737}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = RevMob-Sample\RevMob-Sample.csproj
+	EndGlobalSection
+EndGlobal
