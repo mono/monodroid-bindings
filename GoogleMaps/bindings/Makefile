@@ -43,7 +43,7 @@ define get-descriptions.in-to-merge
 endef
 
 define get-maps.jar-path
-$(strip $(shell find $(ANDROID_SDK_PATH)/ -path \*addon-google_apis-google-$(1)/libs/maps.jar | grep '\<$(1)\>'))
+$(strip $(shell find $(ANDROID_SDK_PATH)/ -regex '.\*addon-google_apis-google\(_inc_\)\*-$(1)/libs/maps.jar' | grep '\<$(1)\>'))
 endef
 
 API_DESCRIPTIONS_IN := $(call get-descriptions.in-to-merge,$(lastword $(API_LEVELS)))
