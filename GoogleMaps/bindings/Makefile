@@ -42,18 +42,15 @@ define get-descriptions.in-to-merge
 	$(patsubst %,obj/android-%/api.xml.in,$(call get-levels-to-merge,$(1)))
 endef
 
-define get-maps.jar-path
-$(strip $(shell find $(ANDROID_SDK_PATH)/ -regex '.\*addon-google_apis-google\(_inc_\)\*-$(1)/libs/maps.jar' | grep '\<$(1)\>'))
-endef
-
 API_DESCRIPTIONS_IN := $(call get-descriptions.in-to-merge,$(lastword $(API_LEVELS)))
 API_DESCRIPTIONS    := $(call get-descriptions-to-merge,$(lastword $(API_LEVELS)))
 
 $(API_DESCRIPTIONS_IN): obj/android-%/api.xml.in: $(MCW_GEN)
 	-mkdir -p obj/android-$*
-	@jar=$(call get-maps.jar-path,$*); \
+	jar=`find $(ANDROID_SDK_PATH)/ -regex '.*addon-google_apis-google\(_inc_\)*-$*/libs/maps.jar' | grep '\<$*\>'`;\
 	if [ ! -f "$$jar" ]; then \
 		echo "Please install the \"Android (API $(API_LEVELS)) > Google APIs by Google Inc.\" package within the \`android\` utility to build GoogleMaps." ; \
+		exit 1; \
 	fi ; \
 	$(MCW_GEN) describe \
 		-sdk-dir="$(ANDROID_SDK_PATH)" \
