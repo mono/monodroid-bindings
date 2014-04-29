@@ -47,7 +47,7 @@ API_DESCRIPTIONS    := $(call get-descriptions-to-merge,$(lastword $(API_LEVELS)
 
 $(API_DESCRIPTIONS_IN): obj/android-%/api.xml.in: $(MCW_GEN)
 	-mkdir -p obj/android-$*
-	jar=`find $(ANDROID_SDK_PATH)/ -regex '.*addon-google_apis-google\(_inc_\)*-$*\(-1\)/libs/maps.jar' | grep '\<$*\>'`;\
+	jar=`find $(ANDROID_SDK_PATH)/ -regex '.*addon-google_apis-google\(_inc_\)*-$*\(-[a-zA-Z0-9]+\)/libs/maps.jar' | grep '\<$*\>'`;\
 	if [ ! -f "$$jar" ]; then \
 		echo "Please install the \"Android (API $(API_LEVELS)) > Google APIs by Google Inc.\" package within the \`android\` utility to build GoogleMaps." ; \
 		exit 1; \
