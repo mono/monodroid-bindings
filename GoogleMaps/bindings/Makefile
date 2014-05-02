@@ -16,7 +16,7 @@ platforms_dir := $(BUILDDIR)/platforms
 ASSEMBLIES = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.dll)
 DOCS       = $(API_LEVELS:%=$(platforms_dir)/android-%/Mono.Android.GoogleMaps.xml)
 
-LEVELS = . . . 4 . . 7 8 . 10 . 12 13 14 15 16 17 18 19 20
+LEVELS = . . . 4 . . 7 8 . 10 . 12 . 14 15 16 17 18 19 20
 
 all:: $(ASSEMBLIES) $(DOCS)
 
