@@ -1,0 +1,15 @@
+﻿<metadata>
+	<!--
+
+	<attr path="/api/package[@name='javax.jmdns.impl']/class[@name='JmDNSImpl.ServiceTypeEntry.SubTypeEntry']" name="managedReturn">Java.Lang.Object</attr> 
+	<attr path="/api/package[@name='javax.jmdns.impl']/class[@name='JmDNSImpl.ServiceTypeEntry.SubTypeEntry']/method[@name='getValue' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr> 
+	<remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='ServiceInfoImpl']" />
+	<remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='JmmDNSImpl']" />
+
+
+
+    -->
+  <remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='DNSCache']" />
+  <remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='JmDNSImpl.ServiceTypeEntry']" />
+  <remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='JmDNSImpl.ServiceTypeEntry.SubTypeEntry']" />
+</metadata>
