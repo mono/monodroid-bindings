@@ -1,7 +1,7 @@
 JmDNS bindings
 ===============
 
-This is the JmDNS (http://www.revmobmobileadnetwork.com/) bindings for Xamarin.Android which at the moment are not working with JmDNS 3.4.1.
+This is the JmDNS bindings for Xamarin.Android which at the moment are not working with JmDNS 3.4.1.
 
 Building
 ========
