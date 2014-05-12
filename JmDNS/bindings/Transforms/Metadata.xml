@@ -12,4 +12,6 @@
   <remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='DNSCache']" />
   <remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='JmDNSImpl.ServiceTypeEntry']" />
   <remove-node path="/api/package[@name='javax.jmdns.impl']/class[@name='JmDNSImpl.ServiceTypeEntry.SubTypeEntry']" />
+    	<attr path="/api/package[@name='javax.jmdns.impl']/class[@name='DNSCache']/method[@name='entrySet' and count(parameter)=0]" name="managedReturn"> System.Collections.ICollection</attr> 
+
 </metadata>
