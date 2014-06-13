@@ -1,18 +1,25 @@
 ﻿<enum-method-mappings>
-	<!--
-  This example changes the Java method:
-    android.support.v4.app.Fragment.SavedState.writeToParcel (int flags)
-  to be:
-    android.support.v4.app.Fragment.SavedState.writeToParcel (Android.OS.ParcelableWriteFlags flags)
-  when bound in C#.
-
-  <mapping jni-class="android/support/v4/app/Fragment.SavedState">
-    <method jni-name="writeToParcel" parameter="flags" clr-enum-type="Android.OS.ParcelableWriteFlags" />
+  <mapping jni-class="javax/jmdns/impl/DNSCache">
+    <method jni-name="entrySet" parameter="return" clr-enum-type="System.Collections.ICollection" />
   </mapping>
 
-  Notes:
-  - For Java interfaces, use "jni-interface" attribute instead of "jni-class" attribute.
-  - To change the type of the return value, use "return" as the parameter name.
-  - The parameter names will be p0, p1, ... unless you provide JavaDoc file in the project.
-  -->
+  <mapping jni-class="javax/jmdns/impl/DNSCache._CacheEntry">
+    <method jni-name="getKey" parameter="return" clr-enum-type="Java.Lang.Object" />
+  </mapping>
+
+  <mapping jni-class="javax/jmdns/impl/DNSCache._CacheEntry">
+    <method jni-name="getValue" parameter="return" clr-enum-type="Java.Lang.Object" />
+  </mapping>
+
+  <mapping jni-class="javax/jmdns/impl/JmDNSImpl.ServiceTypeEntry.SubTypeEntry">
+    <method jni-name="getKey" parameter="return" clr-enum-type="Java.Lang.Object" />
+  </mapping>
+
+  <mapping jni-class="javax/jmdns/impl/JmDNSImpl.ServiceTypeEntry.SubTypeEntry">
+    <method jni-name="getValue" parameter="return" clr-enum-type="Java.Lang.Object" />
+  </mapping>
+
+  <mapping jni-class="javax/jmdns/impl/JmDNSImpl.ServiceTypeEntry">
+    <method jni-name="entrySet" parameter="return" clr-enum-type="System.Collections.ICollection" />
+  </mapping>
 </enum-method-mappings>
