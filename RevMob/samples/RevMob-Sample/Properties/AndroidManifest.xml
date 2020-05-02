@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.revmob.android" android:versionName="2.0">
+	<uses-sdk android:minSdkVersion="7" />
+	<!-- Required -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- Strongly recommended -->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<application android:icon="@drawable/ic_launcher" android:allowBackup="false" android:label="RevMob Publisher Sample App">
+		<meta-data android:name="com.revmob.app.id" android:value="5106bea78e5bd71500000098" />
+		<activity android:name="com.revmob.ads.fullscreen.FullscreenActivity" android:configChanges="keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent"></activity>
+	</application>
+</manifest>
